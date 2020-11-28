@@ -7,7 +7,7 @@ $(document).ready(function () {
     var circleFirst = $(".nav > i.first");
     var circleLast = $(".nav > i.last");
     
-
+//Cambiare immagie cliccando sulle freccie
     next.click(function(){
 
         if(($(".slider-wrapper .images img.active").hasClass("last"))){
@@ -41,8 +41,9 @@ $(document).ready(function () {
         }
     });
 
-    $("body").keydown(function (e) { 
-        var code = e.keyCode;
+//Cambiare le immagini con i tasti freccia
+    $("body").on("keydown",function (e) { 
+        var code = e.keyCode || e.wich;
         if( code == 39 ) {
             $(".next").trigger( "click" );
         }
@@ -50,5 +51,5 @@ $(document).ready(function () {
             $(".prev").trigger( "click" );
         }
     });
-    
 });
+
