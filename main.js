@@ -1,54 +1,49 @@
 $(document).ready(function () {
 
-    /*$(".next").click(function(){
-
-        $("img.active").addClass("disactive");
-        $("img.active + img").addClass("active");
-        $("img.disactive").removeClass("active");   
-    });
-
-    $(".prev").click(function(){       
-        $("img.active").prev("img.disactive").addClass("active").removeClass("disactive");
-        $("img.active + img").removeClass("active");
-        
-    }); */
-
-var next = $(".next");
-var prev = $(".prev");
+    var next = $(".next");
+    var prev = $(".prev");
+    var imgFirst = $(".slider-wrapper .images img.first");
+    var imgLast = $(".slider-wrapper .images img.last");
+    var circleFirst = $(".nav > i.first");
+    var circleLast = $(".nav > i.last");
 
     next.click(function(){
 
         if(($(".slider-wrapper .images img.active").hasClass("last"))){
  
-            $(".slider-wrapper .images img.last").removeClass("active");
-            $(".slider-wrapper .images img.first").addClass("active"); 
-          
+            imgLast.removeClass("active");
+            imgFirst.addClass("active");
+            circleLast.removeClass("active");
+            circleFirst.addClass("active");
+        
         }else{
 
             $(".slider-wrapper .images img.active").next().addClass("active");
             $(".slider-wrapper .images img.active").prev("img.active").removeClass("active");
+            $(".nav > i.active").next().addClass("active");
+            $(".nav > i.active").prev(".active").removeClass("active");
         }
-
+        
     });
-
-    
 
     prev.click(function(){  
         
         if(($(".slider-wrapper .images img.active").hasClass("first"))){
 
-            $(".slider-wrapper .images img.last").addClass("active"); 
-            $(".slider-wrapper .images img.first").removeClass("active");
+            imgLast.addClass("active"); 
+            imgFirst.removeClass("active");
+            circleLast.addClass("active");
+            circleFirst.removeClass("active");;
 
         }else{
 
             $(".slider-wrapper .images img.active").prev("img").addClass("active");
             $(".slider-wrapper .images img.active").next().removeClass("active");
+            $(".nav > i.active").prev(".nav > i").addClass("active");
+            $(".nav > i.active").next().removeClass("active");
            
         }
-
     });
-
 
 });
 
