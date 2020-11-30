@@ -42,14 +42,35 @@ $(document).ready(function () {
     });
 
 //Cambiare le immagini con i tasti freccia
-    $("body").on("keydown",function (e) { 
+    $(document).on("keydown",function (e) { 
         var code = e.keyCode || e.wich;
         if( code == 39 ) {
-            $(".next").trigger( "click" );
+            next.trigger( "click" );
         }
         if( code == 37 ) {
-            $(".prev").trigger( "click" );
+            prev.trigger( "click" );
         }
+        e.preventDefault()
     });
-});
 
+
+
+    //BONUS//Selezione le foto con i pallini
+    var dots = $(".nav > i");
+    var immaginiArray = $("img").siblings().get(); //crea array immagini
+
+   dots.click(function(){
+    //Trova l'indice dell'elemento
+    var dotIndex = $(this).index();
+    //Selezione dot corrente
+    var currentDot = $(this);
+    //console.log(currentDot , dotIndex );
+    
+    dots.removeClass("active");
+    currentDot.addClass("active");
+    console.log(immaginiArray[dotIndex]);
+    $("img.active").removeClass("active");
+    $(immaginiArray[dotIndex]).addClass("active");
+   });
+
+});
